@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import usuario from "../image/user.svg";
 import { useAuth } from "../context/authContext";
 import { useSocket } from "../context/socketContext";
+import logo from "../image/logo.png"; // Asegúrate de que la ruta sea correcta
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -109,11 +110,11 @@ const Navbar = () => {
   // Escuchar notificaciones para tutor
   useEffect(() => {
     if (socket && rol === "tutor") {
-      console.log("Configurando listener para notificaciones");
+      //console.log("Configurando listener para notificaciones");
 
       socket.off("notificacion:nueva");
       socket.on("notificacion:nueva", (data) => {
-        console.log("Notificación recibida:", data);
+        //console.log("Notificación recibida:", data);
 
         const newId = notificationCounter;
         setNotificationCounter((prev) => prev + 1);
@@ -132,7 +133,7 @@ const Navbar = () => {
 
     return () => {
       if (socket && rol === "tutor") {
-        console.log("Limpiando listener de notificaciones");
+        //console.log("Limpiando listener de notificaciones");
         socket.off("notificacion:nueva");
       }
     };
@@ -189,7 +190,7 @@ const Navbar = () => {
       {/* Menú de navegación */}
       <div className="link-pagina">
         <div className="imagen-completa">
-          <img className="imagen-nav" src="/src/image/logo.png"></img>
+          <img className="imagen-nav" src={logo} alt="Logo" />
           <div className="linea-vertical"></div>
 
           <div className="texto-sansi">
