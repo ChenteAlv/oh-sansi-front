@@ -8,6 +8,7 @@ import usuario from "../image/user.svg";
 import { useAuth } from "../context/authContext";
 import { useSocket } from "../context/socketContext";
 import logo from "../image/logo.png"; // Asegúrate de que la ruta sea correcta
+import campana from "../image/campana-notificacion.svg"; // Asegúrate de que la ruta sea correcta
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -110,11 +111,11 @@ const Navbar = () => {
   // Escuchar notificaciones para tutor
   useEffect(() => {
     if (socket && rol === "tutor") {
-      //console.log("Configurando listener para notificaciones");
+      console.log("Configurando listener para notificaciones");
 
       socket.off("notificacion:nueva");
       socket.on("notificacion:nueva", (data) => {
-        //console.log("Notificación recibida:", data);
+        console.log("Notificación recibida:", data);
 
         const newId = notificationCounter;
         setNotificationCounter((prev) => prev + 1);
@@ -133,7 +134,7 @@ const Navbar = () => {
 
     return () => {
       if (socket && rol === "tutor") {
-        //console.log("Limpiando listener de notificaciones");
+        console.log("Limpiando listener de notificaciones");
         socket.off("notificacion:nueva");
       }
     };
@@ -292,7 +293,7 @@ const Navbar = () => {
                     }
                   >
                     <img
-                      src="/src/image/campana-notificacion.svg"
+                      src={campana}
                       alt="Notificaciones"
                     />
                     {notificaciones.length > 0 && (
@@ -344,7 +345,7 @@ const Navbar = () => {
                     onClick={() => setMostrarNotifComp(!mostrarNotifComp)}
                   >
                     <img
-                      src="/src/image/campana-notificacion.svg"
+                      src={campana}
                       alt="Notificaciones"
                     />
                     {notificacionesComp.length > 0 && (
