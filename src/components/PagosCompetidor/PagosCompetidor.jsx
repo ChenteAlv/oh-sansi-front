@@ -32,7 +32,7 @@ const PagosCompetidor = () => {
   useEffect(() => {
     const fetchPagos = async () => {
       try {
-        const response = await fetch('http://localhost:3000/api/pagos');
+        const response = await fetch('https://oh-sansi-back-production.up.railway.app/api/pagos');
         if (!response.ok) {
           throw new Error('Error al cargar los pagos');
         }

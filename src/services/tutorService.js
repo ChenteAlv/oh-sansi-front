@@ -1,7 +1,7 @@
 import axios from 'axios';
 import api from '../api/api';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:7777/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://oh-sansi-back-production.up.railway.app/api';
 
 /**
  * Registra un nuevo tutor

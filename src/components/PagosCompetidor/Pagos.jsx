@@ -90,7 +90,7 @@ const PagosVistaCompetidor = () => {
     // Socket para actualizaciones en tiempo real
     const token = localStorage.getItem('token');
     if (token) {
-      const socket = io('http://localhost:7777', {
+      const socket = io('https://oh-sansi-back-production.up.railway.app', {
         auth: { token }
       });
 

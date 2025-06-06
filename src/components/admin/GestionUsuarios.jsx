@@ -9,8 +9,8 @@ import {
 } from "react-icons/fa";
 import FormularioUsuario from "./FormularioUsuario";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3001/api";
-
+const API_URL = process.env.REACT_APP_API_URL || "https://oh-sansi-back-production.up.railway.app/api";
+0.
 const GestionUsuarios = () => {
   const [usuarios, setUsuarios] = useState([]);
   const [roles, setRoles] = useState([]);

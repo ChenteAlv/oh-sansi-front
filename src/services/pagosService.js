@@ -1,7 +1,7 @@
 // src/services/pagosService.js
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:7777/api/pagos';
+const API_BASE_URL = 'https://oh-sansi-back-production.up.railway.app/api/pagos';
 
 // Función para obtener el token de autenticación
 const getAuthToken = () => {

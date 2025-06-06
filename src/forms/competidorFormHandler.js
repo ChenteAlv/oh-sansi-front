@@ -28,20 +28,20 @@ export const validateCompetidorForm = (formData, setErrors) => {
     }
     if (!formData.birthDate) {
         errors.birthDate = 'Debe seleccionar su fecha de nacimiento.';
-      } else {
+    } else {
         const today = new Date();
         const birthDate = new Date(formData.birthDate);
         let age = today.getFullYear() - birthDate.getFullYear();
         const monthDiff = today.getMonth() - birthDate.getMonth();
         if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-          age--; // Todavía no ha cumplido años este año
+            age--; // Todavía no ha cumplido años este año
         }
-        
+
         if (age < 8 || age > 18) {
-          errors.birthDate = 'Usted no se encuentra dentro del rango de edades permitido en el sistema.';
+            errors.birthDate = 'Usted no se encuentra dentro del rango de edades permitido en el sistema.';
         }
-      }
-      
+    }
+
     if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/.test(formData.email)) {
         errors.email = 'Correo inválido.';
     }
@@ -77,7 +77,7 @@ export const submitCompetidorForm = async (formData, setFormData, setErrors) => 
     //console.log('debuggggg:', payload);
 
     try {
-        const response = await axios.post('http://localhost:7777/api/registro-competidor', datitos);
+        const response = await axios.post('https://oh-sansi-back-production.up.railway.app/api/registro-competidor', datitos);
 
         if (response.data && response.data.credenciales) {
             alert(`Competidor registrado exitosamente.\nCorreo: ${response.data.credenciales.correo_electronico}`);

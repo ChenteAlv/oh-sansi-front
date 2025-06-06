@@ -47,13 +47,13 @@ export const useRegistroForm = () => {
 
     // Fetch departamentos
     useEffect(() => {
-        axios.get('http://localhost:7777/api/departamentos')
+        axios.get('https://oh-sansi-back-production.up.railway.app/api/departamentos')
             .then(res => setDepartamentos(res.data))
             .catch(err => console.error('Error cargando departamentos:', err));
     }, []);
 
     useEffect(() => {
-        axios.get('http://localhost:7777/api/ver-areas')
+        axios.get('https://oh-sansi-back-production.up.railway.app/api/ver-areas')
             .then(res => {
                 console.log('Áreas cargadas:', res.data);
                 setAreas(res.data);
@@ -70,7 +70,7 @@ export const useRegistroForm = () => {
     // Fetch provincias cuando cambia departamento
     useEffect(() => {
         if (formData.department) {
-            axios.get(`http://localhost:7777/api/departamentos/${formData.department}/provincias`)
+            axios.get(`https://oh-sansi-back-production.up.railway.app/api/departamentos/${formData.department}/provincias`)
                 .then(res => {
                     setProvincias(res.data);
                     setFormData(prev => ({ ...prev, province: '', school: '' }));
@@ -83,7 +83,7 @@ export const useRegistroForm = () => {
     // Fetch colegios cuando cambia provincia
     useEffect(() => {
         if (formData.province) {
-            axios.get(`http://localhost:7777/api/provincias/${formData.province}/colegios`)
+            axios.get(`https://oh-sansi-back-production.up.railway.app/api/provincias/${formData.province}/colegios`)
                 .then(res => {
                     setColegios(res.data);
                     setFormData(prev => ({ ...prev, school: '' }));
@@ -125,8 +125,8 @@ export const useRegistroForm = () => {
             setter(prev => ({ ...prev, [id]: value }));
         }
 
-            // Validar edad en tiempo real si la fecha de nacimineto esta detro del rango del sistemas no > a 19 años y no < a 8 años
-            if (userType === 'competidor' && id === 'birthDate') {
+        // Validar edad en tiempo real si la fecha de nacimineto esta detro del rango del sistemas no > a 19 años y no < a 8 años
+        if (userType === 'competidor' && id === 'birthDate') {
             const birthDate = new Date(value);
             const today = new Date();
             let age = today.getFullYear() - birthDate.getFullYear();
@@ -137,15 +137,15 @@ export const useRegistroForm = () => {
 
             if (age < 8 || age > 19) {
                 setErrors(prev => ({
-                ...prev,
-                birthDate: 'Usted no se encuentra dentro del rango de edades permitido en el sistema.'
+                    ...prev,
+                    birthDate: 'Usted no se encuentra dentro del rango de edades permitido en el sistema.'
                 }));
             } else {
                 setErrors(prev => {
-                const { birthDate, ...rest } = prev;
-                return rest;
+                    const { birthDate, ...rest } = prev;
+                    return rest;
                 });
-            }       
+            }
         }
     };
 

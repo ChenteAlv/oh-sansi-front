@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:7777/api';
+const API_URL = 'https://oh-sansi-back-production.up.railway.app/api';
 
 /**
  * Obtiene el listado de postulantes con sus datos y estados de inscripción
@@ -9,7 +9,7 @@ const API_URL = 'http://localhost:7777/api';
  */
 export const obtenerReportePostulantes = async (filtros = {}) => {
   try {
-    const { data } = await axios.get(`${API_URL}/reportes/postulantes`, { 
+    const { data } = await axios.get(`${API_URL}/reportes/postulantes`, {
       params: filtros,
       headers: {
         Authorization: `Bearer ${localStorage.getItem('token')}`

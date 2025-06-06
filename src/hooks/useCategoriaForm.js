@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { validarCampos } from '../utils/validacionCategoria';
 
 const useCategoriaForm = (
-    categoriaAEditar, 
-    areaSeleccionada, 
-    onCrearCategoria, 
-    onActualizarCategoria, 
+    categoriaAEditar,
+    areaSeleccionada,
+    onCrearCategoria,
+    onActualizarCategoria,
     cerrar,
     categoriasExistentes = [],
     todasLasRelaciones = []
@@ -21,7 +21,7 @@ const useCategoriaForm = (
 
     // Carga los grados disponibles
     useEffect(() => {
-        fetch('http://localhost:7777/api/ver-grados')
+        fetch('https://oh-sansi-back-production.up.railway.app/api/ver-grados')
             .then(res => res.json())
             .then(setGrados)
             .catch(err => console.error('Error al cargar grados:', err));
@@ -31,8 +31,8 @@ const useCategoriaForm = (
         if (categoriaAEditar) {
             setNombre(categoriaAEditar.nombre_categoria || '');
             setDescripcion(categoriaAEditar.descripcion_cat || '');
-            
-            setAreaSeleccionada(areaSeleccionada || ''); 
+
+            setAreaSeleccionada(areaSeleccionada || '');
 
             if (grados && grados.length > 0 && categoriaAEditar.grado_min_id != null && categoriaAEditar.grado_max_id != null) {
                 const minId = parseInt(categoriaAEditar.grado_min_id, 10);
@@ -42,20 +42,20 @@ const useCategoriaForm = (
                     .map(g => ({ id: g.id, nombre_grado: g.nombre_grado, nivel: g.nivel.nombre_nivel }));
                 setGradosSeleccionados(preSelected);
             } else {
-                setGradosSeleccionados([]); 
+                setGradosSeleccionados([]);
             }
 
-            setGradosPrimaria([]); 
+            setGradosPrimaria([]);
             setGradosSecundaria([]);
 
-        } else { 
-            limpiarFormulario(); 
-            if (areaSeleccionada) { 
+        } else {
+            limpiarFormulario();
+            if (areaSeleccionada) {
                 setAreaSeleccionada(areaSeleccionada);
             }
         }
-        setErrores({}); 
-    }, [categoriaAEditar, areaSeleccionada, grados]); 
+        setErrores({});
+    }, [categoriaAEditar, areaSeleccionada, grados]);
 
     const toggleGrado = (gradoId) => {
         const gradoObj = grados.find(g => g.id === gradoId);

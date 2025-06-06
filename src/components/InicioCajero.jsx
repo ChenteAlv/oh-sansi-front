@@ -25,13 +25,13 @@ const InicioCajero = () => {
         }
 
         const [statsResponse, pagosRealizadosResponse, pagosPendientesResponse] = await Promise.all([
-          axios.get('http://localhost:7777/api/pagos/estadisticas', {
+          axios.get('https://oh-sansi-back-production.up.railway.app/api/pagos/estadisticas', {
             headers: { 'Authorization': `Bearer ${token}` }
           }),
-          axios.get('http://localhost:7777/api/pagos/realizados', {
+          axios.get('https://oh-sansi-back-production.up.railway.app/api/pagos/realizados', {
             headers: { 'Authorization': `Bearer ${token}` }
           }),
-          axios.get('http://localhost:7777/api/pagos/pendientes', {
+          axios.get('https://oh-sansi-back-production.up.railway.app/api/pagos/pendientes', {
             headers: { 'Authorization': `Bearer ${token}` }
           })
         ]);

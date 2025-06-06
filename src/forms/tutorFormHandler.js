@@ -65,7 +65,7 @@ export const submitTutorForm = async (tutorData, setTutorData, setErrors) => {
     if (!validateTutorForm(tutorData, setErrors)) return;
 
     try {
-        const response = await axios.post('http://localhost:7777/api/registro-tutor', {
+        const response = await axios.post('https://oh-sansi-back-production.up.railway.app/api/registro-tutor', {
             nombre: tutorData.firstName,
             apellido: tutorData.lastName,
             carnet_identidad: tutorData.idNumber,

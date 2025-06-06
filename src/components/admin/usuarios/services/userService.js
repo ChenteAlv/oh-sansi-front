@@ -7,7 +7,7 @@ import axios from "axios";
 
 // URL base de la API
 // En producción, se debería usar environment variables
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:7777/api";
+const API_URL = import.meta.env.VITE_API_URL || "https://oh-sansi-back-production.up.railway.app/api";
 
 /**
  * Obtiene la configuración de autorización para las peticiones
@@ -137,12 +137,12 @@ const handleApiError = (error, defaultMessage) => {
     const message = data.error || (typeof data === "string" ? data : JSON.stringify(data));
     return new Error(message);
   }
-  
+
   // Si es un error de conexión o timeout
   if (error.code === "ECONNABORTED") {
     return new Error("La solicitud tardó demasiado tiempo en completarse");
   }
-  
+
   // Para otros errores, usamos el mensaje por defecto
   return new Error(defaultMessage);
 };

@@ -17,7 +17,7 @@ const DebugComponent = ({ convocatoriaId }) => {
       setError(null);
       try {
         // Obtener la URL de la API
-        const url = import.meta.env.VITE_API_URL || "http://localhost:7777/api";
+        const url = import.meta.env.VITE_API_URL || "https://oh-sansi-back-production.up.railway.app/api";
         setApiUrl(url);
 
         // Probar obtención de info académica

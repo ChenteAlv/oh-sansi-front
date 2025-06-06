@@ -6,7 +6,7 @@
  */
 
 // Definimos la URL del API para toda la aplicación
-export const API_URL = 'http://localhost:7777/api';
+export const API_URL = 'https://oh-sansi-back-production.up.railway.app/api';
 
 // Otras configuraciones relacionadas con el API
 export const API_TIMEOUT = 10000; // 10 segundos 
