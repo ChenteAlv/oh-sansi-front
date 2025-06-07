@@ -13,7 +13,7 @@ export const SocketProvider = ({ children }) => {
   useEffect(() => {
     if (usuario && usuario.id) {
       // Conectar al servidor websocket
-      const socketConnection = io("http://localhost:7777"); //url del servidor websocket
+      const socketConnection = io("https://oh-sansi-back-production.up.railway.app"); //url del servidor websocket
 
       // registrar el usuario al conectarse
       socketConnection.on("connect", () => {
