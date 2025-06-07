@@ -15,7 +15,7 @@ export const obtenerNumerodeConvocatoriasActivas = async () => {
         const response = await api.get('/convocatoria-numeros');
         return response.data;
     } catch (error) {
-        console.error('Error al obtener convocatorias:', error);
+        // console.error('Error al obtener convocatorias:', error);
         throw error;
     }
 }
@@ -25,7 +25,7 @@ export const obtenerUnaConvocatoriaActiva = async (id) => {
         const response = await api.get(`/convocatoria-una-activa`);
         return response.data;
     } catch (error) {
-        console.error('error al obtener una convocatoria activa:', error);
+        // console.error('error al obtener una convocatoria activa:', error);
         throw error;
     }
 }
@@ -36,7 +36,7 @@ export const obtenerCategoriasArea = async (id) => {
         const response = await api.get(`/ver-categorias-area/${id}`);
         return response.data;
     } catch (error) {
-        console.error('Error al obtener categorías del área:', error);
+        // console.error('Error al obtener categorías del área:', error);
         throw error;
     }
 }
@@ -46,7 +46,7 @@ export const obtenerAreas = async () => {
         const response = await api.get('/ver-areas');
         return response.data;
     } catch (error) {
-        console.error('Error al obtener áreas:', error);
+        // console.error('Error al obtener áreas:', error);
         throw error;
     }
 }
@@ -68,7 +68,7 @@ export const obtenerTutores = async (id_area, nombre) => {
 
 export const registrarInscripcion = async ({ area_id, categoria_id, tutor_ids }) => {
     try {
-        console.log('Datos de inscripción:', { area_id, categoria_id, tutor_ids });
+        //  console.log('Datos de inscripción:', { area_id, categoria_id, tutor_ids });
         const response = await apiAuth.post('/inscripcion-tutor', {
             area_id,
             categoria_id,
@@ -77,7 +77,7 @@ export const registrarInscripcion = async ({ area_id, categoria_id, tutor_ids })
 
         return response.data;
     } catch (error) {
-        console.error('Error al registrar la inscripción:', error);
+        // console.error('Error al registrar la inscripción:', error);
         throw error;
     }
 };
@@ -85,14 +85,15 @@ export const registrarInscripcion = async ({ area_id, categoria_id, tutor_ids })
 
 export const obtenerMisInscripciones = async () => {
     try {
-        console.log('Consultando mis inscripciones...');
-        const response = await apiAuth.get('/competidor/mis-inscripciones');
-        console.log('Respuesta recibida:', response.data);
+        //console.log('Consultando mis inscripciones...');
+        const response = await apiAuth.get('/mis-inscripciones');
+        //console.log('Respuesta recibida:', response.data);
         return response.data.inscripciones;
     } catch (error) {
-        console.error('Error al obtener mis inscripciones:', error);
+        //console.error('Error al obtener mis inscripciones:', error);
     }
 }
+
 
 export const obtenerGrados = async (id) => {
     try {
@@ -112,7 +113,7 @@ export const obtenerGrados = async (id) => {
             niveles: data.niveles || []
         };
     } catch (error) {
-        console.error('Error al obtener grados:', error);
+        //console.error('Error al obtener grados:', error);
         throw error;
     }
 };
@@ -121,10 +122,10 @@ export const obtenerCategorias = async (areaId) => {
     try {
         const response = await api.get(`/ver-categorias-area/${areaId}`);
         const categorias = response.data;
-        
+
         // Verificar si hay datos y tienen el formato esperado
         if (!Array.isArray(categorias)) {
-            console.error('Formato de respuesta inesperado:', categorias);
+            // console.error('Formato de respuesta inesperado:', categorias);
             throw new Error('Formato de respuesta inválido');
         }
 
@@ -133,7 +134,7 @@ export const obtenerCategorias = async (areaId) => {
             nombre: cat.categoria.nombre_categoria
         }));
     } catch (error) {
-        console.error('Error al obtener categorías por área:', error);
+        // console.error('Error al obtener categorías por área:', error);
         throw error;
     }
 };
