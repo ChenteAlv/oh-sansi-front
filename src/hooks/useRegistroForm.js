@@ -138,7 +138,7 @@ export const useRegistroForm = () => {
             if (age < 8 || age > 19) {
                 setErrors(prev => ({
                     ...prev,
-                    birthDate: 'Usted no se encuentra dentro del rango de edades permitido en el sistema.'
+                    birthDate: 'La edad permitida para registrarse es de 8 a 19 años.'
                 }));
             } else {
                 setErrors(prev => {

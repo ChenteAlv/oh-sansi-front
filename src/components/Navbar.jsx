@@ -154,12 +154,12 @@ const Navbar = () => {
         fecha: new Date().toLocaleString()
       }
       */
-        {
+     /*   {
           id: Date.now(),
           mensaje: "Tu solicitud fue rechazada",
           motivo: "Falta de documentos obligatorios",
           fecha: new Date().toLocaleString(),
-        },
+        },*/
       ]);
     }
   }, [rol]);
