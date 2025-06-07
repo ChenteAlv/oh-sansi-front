@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:7777/api', // ajustá si es necesario
+    baseURL: 'https://oh-sansi-back-production.up.railway.app/api', // ajustá si es necesario
 });
 
 export default instance;

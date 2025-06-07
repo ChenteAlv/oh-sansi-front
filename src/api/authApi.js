@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Configuración base para axios
-const API_BASE_URL = 'http://localhost:7777/api';
+const API_BASE_URL = 'https://oh-sansi-back-production.up.railway.app/api';
 
 // Crear instancia de axios con configuración común
 const api = axios.create({
