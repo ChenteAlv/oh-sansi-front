@@ -31,7 +31,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errores = validateLogin(formData);
-    setErrors(errores);
+    setErrors({
+      correo: "",
+      contraseña: "",
+    });
 
     if (Object.keys(errores).length === 0) {
       try {
