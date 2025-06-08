@@ -31,10 +31,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const errores = validateLogin(formData);
-    setErrors({
-      correo: "",
-      contraseña: "",
-    });
+    setErrors(errores);
 
     if (Object.keys(errores).length === 0) {
       try {
@@ -47,7 +44,7 @@ const Login = () => {
         //console.log("Enviando datos:", JSON.stringify(datosParaEnviar));
 
         const response = await axios.post(
-          "https://oh-sansi-back-production.up.railway.app/api/",
+          "https://oh-sansi-back-production.up.railway.app/api/login",
           datosParaEnviar,
           {
             headers: {
