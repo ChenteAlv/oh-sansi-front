@@ -47,7 +47,7 @@ const Login = () => {
         //console.log("Enviando datos:", JSON.stringify(datosParaEnviar));
 
         const response = await axios.post(
-          "https://oh-sansi-back-production.up.railway.app/api/login",
+          "https://oh-sansi-back-production.up.railway.app/api/",
           datosParaEnviar,
           {
             headers: {
