@@ -63,18 +63,18 @@ export const useEditarConvocatoria = ({ visible, convocatoriaId, recargarConvoca
                     areasSeleccionadas: areasIds
                 });
 
-                console.log('Formulario actualizado:', {
-                    nombre: convocatoria.nombre_convocatoria || '',
-                    id_estado_convocatoria: convocatoria.id_estado_convocatoria?.toString() || '',
-                    descripcion: convocatoria.descripcion_convocatoria || '',
-                    inscripcionInicio: formatDate(convocatoria.fecha_inicio),
-                    inscripcionFin: formatDate(convocatoria.fecha_fin),
-                    pagoInicio: formatDate(convocatoria.pago_inicio),
-                    pagoFin: formatDate(convocatoria.pago_fin),
-                    competenciaInicio: formatDate(convocatoria.competicion_inicio),
-                    competenciaFin: formatDate(convocatoria.competicion_fin),
-                    areasSeleccionadas: areasIds
-                });
+                /*  console.log('Formulario actualizado:', {
+                      nombre: convocatoria.nombre_convocatoria || '',
+                      id_estado_convocatoria: convocatoria.id_estado_convocatoria?.toString() || '',
+                      descripcion: convocatoria.descripcion_convocatoria || '',
+                      inscripcionInicio: formatDate(convocatoria.fecha_inicio),
+                      inscripcionFin: formatDate(convocatoria.fecha_fin),
+                      pagoInicio: formatDate(convocatoria.pago_inicio),
+                      pagoFin: formatDate(convocatoria.pago_fin),
+                      competenciaInicio: formatDate(convocatoria.competicion_inicio),
+                      competenciaFin: formatDate(convocatoria.competicion_fin),
+                      areasSeleccionadas: areasIds
+                  });*/
             }
         } catch (error) {
             console.error('Error cargando datos:', error);
@@ -83,31 +83,31 @@ export const useEditarConvocatoria = ({ visible, convocatoriaId, recargarConvoca
             setCargando(false);
         }
     };
-
-    const validarFechasEnTiempoReal = (form) => {
-        const hoy = new Date();
-        hoy.setHours(0, 0, 0, 0);
-        const err = {};
-
-        const parse = (f) => f ? new Date(f) : null;
-
-        const fi = parse(form.inscripcionInicio);
-        const ff = parse(form.inscripcionFin);
-        const pi = parse(form.pagoInicio);
-        const pf = parse(form.pagoFin);
-        const ci = parse(form.competenciaInicio);
-        const cf = parse(form.competenciaFin);
-
-        if (fi && fi < hoy) err.inscripcionInicio = 'Debe ser igual o posterior a hoy.';
-        if (fi && ff && ff <= fi) err.inscripcionFin = 'Debe ser después de la fecha de inicio.';
-        if (ff && pi && pi <= ff) err.pagoInicio = 'El inicio de pago debe ser después de inscripción.';
-        if (pi && pf && pf <= pi) err.pagoFin = 'Debe ser posterior al inicio de pago.';
-        if (pf && ci && ci <= pf) err.competenciaInicio = 'Inicio de competencia debe ser después de pago.';
-        if (ci && cf && cf <= ci) err.competenciaFin = 'Debe ser después del inicio de competencia.';
-
-        return err;
-    };
-
+    /*
+        const validarFechasEnTiempoReal = (form) => {
+            const hoy = new Date();
+            hoy.setHours(0, 0, 0, 0);
+            const err = {};
+    
+            const parse = (f) => f ? new Date(f) : null;
+    
+            const fi = parse(form.inscripcionInicio);
+            const ff = parse(form.inscripcionFin);
+            const pi = parse(form.pagoInicio);
+            const pf = parse(form.pagoFin);
+            const ci = parse(form.competenciaInicio);
+            const cf = parse(form.competenciaFin);
+    
+            //if (fi && fi < hoy) err.inscripcionInicio = 'Debe ser igual o posterior a hoy.';
+            if (fi && ff && ff <= fi) err.inscripcionFin = 'Debe ser después de la fecha de inicio.';
+            if (ff && pi && pi <= ff) err.pagoInicio = 'El inicio de pago debe ser después de inscripción.';
+            if (pi && pf && pf <= pi) err.pagoFin = 'Debe ser posterior al inicio de pago.';
+            if (pf && ci && ci <= pf) err.competenciaInicio = 'Inicio de competencia debe ser después de pago.';
+            if (ci && cf && cf <= ci) err.competenciaFin = 'Debe ser después del inicio de competencia.';
+    
+            return err;
+        };
+    */
 
     const manejarCambio = (e) => {
         const { name, value } = e.target;
